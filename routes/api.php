@@ -12,3 +12,5 @@ Route::prefix('product')->group(function () {
     Route::post('/', [App\Http\Controllers\ProductController::class, 'store']);
     Route::get('/', [App\Http\Controllers\ProductController::class, 'getAll']);
 });
+
+Route::post('test', [App\Http\Controllers\ProductController::class, 'test']);
