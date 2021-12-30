@@ -14,7 +14,7 @@ class ProductController extends Controller
         $product->price = $request['price'];
         $product->save();
 
-        $addMedia = $product->addMediaFromRequest('img')->toMediaCollection('products');
+        $addMedia = $product->addMediaFromRequest('img')->toMediaCollection('product-cols', 'products');
 
         $data['message'] = 'Berhasil';
         $data['data'] = $product;

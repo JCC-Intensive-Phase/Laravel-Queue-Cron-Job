@@ -25,7 +25,7 @@ class Product extends Model implements HasMedia
 
     public function getImagesAttribute()
     {
-        $medias = $this->getMedia('products')->first();
+        $medias = $this->getMedia('product-cols')->first();
         if ($medias) {
             $images['large'] = $medias->getUrl('large');
             $images['medium'] = $medias->getUrl('medium');
