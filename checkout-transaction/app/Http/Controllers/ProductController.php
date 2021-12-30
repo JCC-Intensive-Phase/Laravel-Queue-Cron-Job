@@ -25,12 +25,40 @@ class ProductController extends Controller
             return response()->json($response, 400);
         }
 
-        $product = new Product();
-        $product->name = $request->name;
-        $product->price = $request->price;
-        $product->stock = $request->stock;
-        $product->save();
+        $product = Product::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'stock' => $request->stock,
+        ])->addMediaFromRequest('image')->toMediaCollection('products', 's3');
 
-        $product->addMediaFromRequest('image')->toMediaCollection('products');
+        return response()->json([
+            'status' => 200,
+            'message' => 'Berhasil!',
+            'data' => $product
+        ], 200);
+
+        // $product = new Product();
+        // $product->name = $request->name;
+        // $product->price = $request->price;
+        // $product->stock = $request->stock;
+
+        // //save original file to AWS
+        // $product->addMediaFromRequest('image')->toMediaCollection('products', 's3');
+
+        // if (!$product->save()) {
+
+        //     $response = [
+        //         'message' => 'Gagal Menyimpan Data!',
+        //         'data' => null,
+        //     ];
+
+        //     return response()->json($response, 400);
+        // } else {
+        //     $response = [
+        //         'message' => 'Berhasil Menyimpan Data!',
+        //     ];
+
+        //     return response()->json($response, 200);
+        // }
     }
 }

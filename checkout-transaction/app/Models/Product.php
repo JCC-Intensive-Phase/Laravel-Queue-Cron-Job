@@ -19,7 +19,7 @@ class Product extends Model implements HasMedia
     ];
 
     protected $appends = [
-        'image_url'
+        'image'
     ];
 
     // public function transactions()
@@ -27,20 +27,38 @@ class Product extends Model implements HasMedia
     //     return $this->hasMany(Transaction::class);
     // }
 
+    public function getImageUrlAttribute()
+    {
+        $medias = $this->getMedia('products')->first();
+        if ($medias) {
+            $images['large'] = $medias->getUrl('large');
+            $images['medium'] = $medias->getUrl('medium');
+            $images['small'] = $medias->getUrl('small');
+        } else {
+            $images['large'] = null;
+            $images['medium'] = null;
+            $images['small'] = null;
+        }
+        return $images;
+    }
 
-    public function registerMediaConversions(Media $media = null)
+
+    public function registerMediaConversions(Media $media = null): void
     {
 
         $this->addMediaConversion('large')
             ->width(1024)
-            ->height(600);
+            ->height(600)
+            ->useDisk('s3');
 
         $this->addMediaConversion('medium')
             ->width(800)
-            ->height(400);
+            ->height(400)
+            ->useDisk('s3');
 
         $this->addMediaConversion('small')
             ->width(215)
-            ->height(80);
+            ->height(80)
+            ->useDisk('s3');
     }
 }
