@@ -8,3 +8,6 @@
 4. php artisan storage:link
 5. set env QUEUE_CONNECTION=redis
 6. set env REDIS_CLIENT=predis
+7. php artisan migrate --seed
+8. php artisan serve
+9. php artisan horizon
