@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('command:notify-expire')->everyMinute();
         $schedule->command('command:notify-process')->everyMinute();
+        $schedule->command('backup:run')->daily()->at('01:30');
     }
 
     /**
