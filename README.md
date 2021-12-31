@@ -17,3 +17,7 @@
 1. Notify expire = php artisan command:notify-expire
 2. Notify paid = php artisan command:notify-paid
 3. Backup database = php artisan backup:run
+
+## How to setup aws
+1. Tutorial solve permission [link](https://daengweb.id/cara-upload-file-ke-amazon-s3-menggunakan-laravel-7)
+2. Tutorial video [link](https://www.youtube.com/watch?v=xZQM9q_QxMA)
