@@ -27,7 +27,7 @@
 
 > npm run dev
 
-- persiapan hot reload
+- persiapan hot reload (optional)
 
 > npm run hot 
 
@@ -40,3 +40,5 @@ lalu batalkan proses setelah selesai
 > npm run watch
 
 Jangan lupa siapkan email tumbal ya..... isi di env
+
+dan jangan lupa untuk buat akun aws
