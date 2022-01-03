@@ -8,7 +8,7 @@ import axios from 'axios'
 const ShowProduct = ({auth}) =>{
     const [data,setData] = useState([])
     useEffect(() => {
-        axios.get(`/product`)
+        axios.get(`/api/product`)
             .then(data=>setData(data.data.data))
             .catch(error=>console.log(error))
         return () => {

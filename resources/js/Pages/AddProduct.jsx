@@ -17,7 +17,7 @@ const AddProduct = ({auth}) =>{
             console.log(data)
             axios({
                 method: "post",
-                url: "/product",
+                url: "/api/product",
                 data: data,
                 headers: { "Content-Type": "multipart/form-data" },
                 })

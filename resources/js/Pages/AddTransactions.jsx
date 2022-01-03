@@ -18,7 +18,7 @@ const AddTransaction = ({auth}) =>{
         }
         if(productName !== '' && productPrice !== 0 && productAmount !== 0){
             console.log(data)
-            axios.post('/transaction',data)
+            axios.post('/api/transaction',data)
                 .then(data=>{
                     alert('Transaksi Berhasil Dibuat. Harap bayar sebelum 1 jam untuk kami proses')
                     setProductName('')

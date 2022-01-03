@@ -55,15 +55,3 @@ Route::get('/lihat-produk', function () {
 Auth::routes();
 
 
-Route::get('/transaction/{id}',[TransactionController::class,'index']);
-Route::post('/transaction',[TransactionController::class,'store']);
-Route::put('/transaction/{transaction}',[TransactionController::class,'update']);
-
-Route::get('/test',[MailController::class,'test']);
-
-
-Route::get('/product',[ProductController::class,'index']);
-Route::get('/product/{product}',[ProductController::class,'show']);
-Route::post('/product',[ProductController::class,'store']);
-Route::put('/product/{product}',[ProductController::class,'update']);
-

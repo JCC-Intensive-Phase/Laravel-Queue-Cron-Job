@@ -8,7 +8,7 @@ import axios from 'axios'
 const ShowTransaction = ({auth}) =>{
     const [data,setData] = useState([])
     useEffect(() => {
-        axios.get(`/transaction/${auth.id}`)
+        axios.get(`/api/transaction/${auth.id}`)
             .then(data=>setData(data.data.data))
             .catch(error=>console.log(error))
         return () => {
@@ -46,7 +46,7 @@ const ShowTransaction = ({auth}) =>{
                                         {data.status === 'created' ?
 
                                             <button onClick={()=>{
-                                                axios.put(`/transaction/${data.id}`,{user_id:auth.id})
+                                                axios.put(`/api/transaction/${data.id}`,{user_id:auth.id})
                                                 .then(data=>setData(data.data.data))
                                             }} className='btn btn-success'>Bayar</button>
                                             :
