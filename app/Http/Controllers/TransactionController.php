@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TransactionsExport;
 use App\Models\Transaction;
 use DB;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TransactionController extends Controller
 {
@@ -114,5 +116,10 @@ class TransactionController extends Controller
         }
         $data['message'] = 'Pembayaran berhasil, transaksi dalam antrian!';
         return response()->json($data, 200);
+    }
+
+    public function export()
+    {
+        return Excel::download(new TransactionsExport, 'transactions' . time() . '.xlsx');
     }
 }

@@ -23,9 +23,15 @@ class ProductController extends Controller
 
     public function getAll()
     {
-        $products = Product::all();
-        $data['message'] = 'Berhasil';
-        $data['data'] = $products;
-        return response()->json($data, 200);
+        try {
+            $products = Product::all();
+            $data['message'] = 'Berhasil';
+            $data['data'] = $products;
+            return response()->json($data, 200);
+        } catch (\Throwable $th) {
+            $data['message'] = $th->getMessage();
+            $data['data'] = null;
+            return response()->json($data, 500);
+        }
     }
 }
